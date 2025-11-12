@@ -1,0 +1,126 @@
+!doctype html
+html lang=zh-Hant
+head
+  meta charset=utf-8 
+  meta name=viewport content=width=device-width,initial-scale=1 
+  titleAI Art — Minimal Grid (Offline Preview)title
+  !--
+    ✅ 此版本不連到任何外部資源，可在 ChatGPT 預覽器中離線預覽。
+    使用方式：
+      1) 直接把本檔案存成 index.html。
+      2) 先預覽確認版面。
+      3) 將 img 的 src 改成你的實際圖片路徑，例如 imagesxxx.jpg。
+    部署到 GitHub Pages：
+      - 新增資料夾 images 並放入你的圖片
+      - 提交 index.html 與 images 至 repo
+      - Settings → Pages 開啟部署
+  --
+  style
+    root{--bg#0f1724;--card#0b1220;--accent#7c3aed;--text#e6eef8;--mutedrgba(230,238,248,.7)}
+    {box-sizingborder-box}
+    html,body{height100%}
+    body{margin0;backgroundlinear-gradient(180deg,#071020 0%,var(--bg) 100%);colorvar(--text);font-familyInter,system-ui,Segoe UI,Roboto,Noto Sans CJK TC,sans-serif}
+    header{padding28px 20px;displayflex;align-itemscenter;justify-contentspace-between;gap16px}
+    .brand{displayflex;gap12px;align-itemscenter}
+    .logo{width44px;height44px;border-radius10px;backgroundlinear-gradient(135deg,var(--accent),#0ea5a4);displayflex;align-itemscenter;justify-contentcenter;font-weight800}
+    h1{margin0;font-size1.08rem}
+    .sub{font-size.86rem;opacity.8}
+    .grid{padding20px 24px 40px;displaygrid;grid-template-columnsrepeat(auto-fill,minmax(220px,1fr));gap16px}
+    figure{margin0}
+    .item{backgroundvar(--card);border-radius14px;overflowhidden;cursorpointer;positionrelative;outline1px solid rgba(255,255,255,.04)}
+    .item img{width100%;height240px;object-fitcover;displayblock}
+    .meta{padding12px;font-size.92rem}
+    .meta small{opacity.7}
+    footer{padding20px;text-aligncenter;colorvar(--muted);font-size.86rem}
+     Lightbox 
+    .lightbox{positionfixed;inset0;backgroundrgba(2,6,23,.78);displayflex;align-itemscenter;justify-contentcenter;opacity0;pointer-eventsnone;transitionopacity .18s}
+    .lightbox.open{opacity1;pointer-eventsauto}
+    .preview{max-width92vw;max-height92vh;border-radius12px;box-shadow0 10px 40px rgba(2,6,23,.6);overflowhidden;background#000}
+    .preview img{displayblock;max-width100%;max-height100%;object-fitcontain}
+    .close{positionabsolute;top16px;right16px;backgroundrgba(0,0,0,.5);border1px solid rgba(255,255,255,.2);color#fff;border-radius10px;padding8px 10px;font-size.9rem;cursorpointer}
+    @media (max-width520px){.item img{height180px}}
+  style
+head
+body
+  header
+    div class=brand
+      div class=logoAIdiv
+      div
+        h1AI Art — Minimal Gridh1
+        div class=subStable Diffusion 作品集 • 離線預覽版（部署時把圖片路徑改成你的檔案）div
+      div
+    div
+    nav style=displayflex;gap12px;align-itemscenter
+      a href=#about style=colorvar(--text);text-decorationnone;opacity.85Abouta
+      a href=#contact style=colorvar(--text);text-decorationnone;opacity.85Contacta
+    nav
+  header
+
+  main
+    section class=grid id=gallery
+      !--
+        將下方的 data-uri 佔位圖，替換為你的圖片路徑：
+        img src=imagesyour-file.jpg alt=Title loading=lazy 
+      --
+      
+      !-- 卡片 1 --
+      figure class=item data-title=Nebula Study data-desc=5120×3200 • SDXL prompt
+        img src=dataimagesvg+xml,%3Csvg xmlns='httpwww.w3.org2000svg' width='1200' height='800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'%3E%3Cstop offset='1' stop-color='%230ea5a4'%3E%3ClinearGradient%3E%3Cdefs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter, sans-serif' font-size='36'%3EReplace with your image%3Ctext%3E%3Csvg%3E alt=Nebula Study loading=lazy
+        figcaption class=metastrongNebula Studystrongbrsmall5120×3200 • SDXL promptsmallfigcaption
+      figure
+
+      !-- 卡片 2 --
+      figure class=item data-title=Urban Drone data-desc=3840×2160 • ControlNet + LoRA
+        img src=dataimagesvg+xml,%3Csvg xmlns='httpwww.w3.org2000svg' width='1200' height='800'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230ea5a4'%3E%3Cstop offset='1' stop-color='%237c3aed'%3E%3ClinearGradient%3E%3Cdefs%3E%3Crect width='100%25' height='100%25' fill='url(%23g2)'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter, sans-serif' font-size='36'%3EYour image here%3Ctext%3E%3Csvg%3E alt=Urban Drone loading=lazy
+        figcaption class=metastrongUrban Dronestrongbrsmall3840×2160 • ControlNet + LoRAsmallfigcaption
+      figure
+
+      !-- 卡片 3 --
+      figure class=item data-title=Portrait Study data-desc=3072×4096 • LoRA portrait
+        img src=dataimagesvg+xml,%3Csvg xmlns='httpwww.w3.org2000svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='%230b1220'%3E%3Ccircle cx='45%25' cy='45%25' r='220' fill='%237c3aed'%3E%3Ccircle cx='60%25' cy='60%25' r='280' fill='%230ea5a4' opacity='.7'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Inter, sans-serif' font-size='34'%3EReplace later%3Ctext%3E%3Csvg%3E alt=Portrait Study loading=lazy
+        figcaption class=metastrongPortrait Studystrongbrsmall3072×4096 • LoRA portraitsmallfigcaption
+      figure
+
+      !-- 你可以複製上方區塊，快速增加更多作品卡片 --
+    section
+
+    section id=about style=padding0 24px 24px;max-width900px;marginauto;colorvar(--muted);font-size.95rem
+      h2 style=colorvar(--text)Abouth2
+      p本頁面展示以 Stable Diffusion 生成之個人作品，僅供面試與作品集用途。部署到 GitHub Pages 後，請將佔位圖片替換為實際作品路徑，例如 codeimagesxxx.jpgcode。p
+    section
+  main
+
+  div class=lightbox id=lightbox aria-hidden=true
+    button class=close id=closeBtn aria-label=Close✕button
+    div class=previewimg src= alt=previewdiv
+  div
+
+  footerMade with Stable Diffusion • For interview portfoliofooter
+
+  script
+     簡易 lightbox（無外部資源）
+    const items = document.querySelectorAll('.item');
+    const lightbox = document.getElementById('lightbox');
+    const previewImg = document.querySelector('.preview img');
+    const closeBtn = document.getElementById('closeBtn');
+
+    items.forEach(el={
+      el.addEventListener('click',()={
+        const img = el.querySelector('img').getAttribute('src');
+        previewImg.setAttribute('src', img);
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      previewImg.removeAttribute('src');
+    }
+
+    lightbox.addEventListener('click',e={ if(e.target===lightbox) closeLightbox(); });
+    closeBtn.addEventListener('click', closeLightbox);
+  script
+body
+html
