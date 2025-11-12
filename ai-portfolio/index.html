@@ -1,136 +1,112 @@
-!doctype html
-html lang=zh-Hant
-head
-  meta charset=utf-8 
-  meta name=viewport content=width=device-width,initial-scale=1 
-  titleAI Art — Minimal Grid (Offline Preview)title
-  !--
-    ✅ 此版本不連到任何外部資源，可在 ChatGPT 預覽器中離線預覽。
-    使用方式：
-      1) 直接把本檔案存成 index.html。
-      2) 先預覽確認版面。
-      3) 將 img 的 src 改成你的實際圖片路徑，例如 imagesxxx.jpg。
-    部署到 GitHub Pages：
-      - 新增資料夾 images 並放入你的圖片
-      - 提交 index.html 與 images 至 repo
-      - Settings → Pages 開啟部署
-  --
-  style
-    root{--bg#0f1724;--card#0b1220;--accent#7c3aed;--text#e6eef8;--mutedrgba(230,238,248,.7)}
-    {box-sizingborder-box}
-    html,body{height100%}
-    body{margin0;backgroundlinear-gradient(180deg,#071020 0%,var(--bg) 100%);colorvar(--text);font-familyInter,system-ui,Segoe UI,Roboto,Noto Sans CJK TC,sans-serif}
-    header{padding28px 20px;displayflex;align-itemscenter;justify-contentspace-between;gap16px}
-    .brand{displayflex;gap12px;align-itemscenter}
-    .logo{width44px;height44px;border-radius10px;backgroundlinear-gradient(135deg,var(--accent),#0ea5a4);displayflex;align-itemscenter;justify-contentcenter;font-weight800}
-    h1{margin0;font-size1.08rem}
-    .sub{font-size.86rem;opacity.8}
-    .grid{padding20px 24px 40px;displaygrid;grid-template-columnsrepeat(auto-fill,minmax(220px,1fr));gap16px}
-    figure{margin0}
-    .item{backgroundvar(--card);border-radius14px;overflowhidden;cursorpointer;positionrelative;outline1px solid rgba(255,255,255,.04)}
-    .item img{width100%;height240px;object-fitcover;displayblock}
-    .meta{padding12px;font-size.92rem}
-    .meta small{opacity.7}
-    footer{padding20px;text-aligncenter;colorvar(--muted);font-size.86rem}
-     Lightbox 
-    .lightbox{positionfixed;inset0;backgroundrgba(2,6,23,.78);displayflex;align-itemscenter;justify-contentcenter;opacity0;pointer-eventsnone;transitionopacity .18s}
-    .lightbox.open{opacity1;pointer-eventsauto}
-    .preview{max-width92vw;max-height92vh;border-radius12px;box-shadow0 10px 40px rgba(2,6,23,.6);overflowhidden;background#000}
-    .preview img{displayblock;max-width100%;max-height100%;object-fitcontain}
-    .close{positionabsolute;top16px;right16px;backgroundrgba(0,0,0,.5);border1px solid rgba(255,255,255,.2);color#fff;border-radius10px;padding8px 10px;font-size.9rem;cursorpointer}
-    @media (max-width520px){.item img{height180px}}
-  style
-head
-body
-  header
-    div class=brand
-      div class=logoAIdiv
-      div
-        h1AI Art — Minimal Gridh1
-        div class=subStable Diffusion 作品集 • 離線預覽版（部署時把圖片路徑改成你的檔案）div
-      div
-    div
-    nav style=displayflex;gap12px;align-itemscenter
-      a href=#about style=colorvar(--text);text-decorationnone;opacity.85Abouta
-      a href=#contact style=colorvar(--text);text-decorationnone;opacity.85Contacta
-    nav
-  header
-
-  main
-    section class=grid id=gallery
-      !--
-        將下方的 data-uri 佔位圖，替換為你的圖片路徑：
-        img src=imagesyour-file.jpg alt=Title loading=lazy 
-      --
-      
-      <!-- 卡片 1 -->
-<figure class="item" data-title="Nebula Study" data-desc="5120×3200 • SDXL prompt">
-  <img src="images/00006-948672579.png" alt="Nebula Study" loading="lazy">
-  <figcaption class="meta">
-    <strong>Nebula Study</strong><br>
-    <small>5120×3200 • SDXL prompt</small>
-  </figcaption>
-</figure>
-
-<!-- 卡片 2 -->
-<figure class="item" data-title="Urban Drone" data-desc="3840×2160 • ControlNet + LoRA">
-  <img src="images/00006-948672579.png" alt="Urban Drone" loading="lazy">
-  <figcaption class="meta">
-    <strong>Urban Drone</strong><br>
-    <small>3840×2160 • ControlNet + LoRA</small>
-  </figcaption>
-</figure>
-
-<!-- 卡片 3 -->
-<figure class="item" data-title="Portrait Study" data-desc="3072×4096 • LoRA portrait">
-  <img src="images/00006-948672579.png" alt="Portrait Study" loading="lazy">
-  <figcaption class="meta">
-    <strong>Portrait Study</strong><br>
-    <small>3072×4096 • LoRA portrait</small>
-  </figcaption>
-</figure>
-
-
-      !-- 你可以複製上方區塊，快速增加更多作品卡片 --
-    section
-
-    section id=about style=padding0 24px 24px;max-width900px;marginauto;colorvar(--muted);font-size.95rem
-      h2 style=colorvar(--text)Abouth2
-      p本頁面展示以 Stable Diffusion 生成之個人作品，僅供面試與作品集用途。部署到 GitHub Pages 後，請將佔位圖片替換為實際作品路徑，例如 codeimagesxxx.jpgcode。p
-    section
-  main
-
-  div class=lightbox id=lightbox aria-hidden=true
-    button class=close id=closeBtn aria-label=Close✕button
-    div class=previewimg src= alt=previewdiv
-  div
-
-  footerMade with Stable Diffusion • For interview portfoliofooter
-
-  script
-     簡易 lightbox（無外部資源）
-    const items = document.querySelectorAll('.item');
-    const lightbox = document.getElementById('lightbox');
-    const previewImg = document.querySelector('.preview img');
-    const closeBtn = document.getElementById('closeBtn');
-
-    items.forEach(el={
-      el.addEventListener('click',()={
-        const img = el.querySelector('img').getAttribute('src');
-        previewImg.setAttribute('src', img);
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden','false');
-      });
-    });
-
-    function closeLightbox(){
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden','true');
-      previewImg.removeAttribute('src');
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Art Portfolio - Minimal Grid</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --accent: #7c3aed;
+      --text: #e6eef8;
     }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg,#071020 0%,var(--bg) 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, Segoe UI, Roboto, "Noto Sans CJK TC", sans-serif;
+    }
+    header {
+      padding: 28px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: linear-gradient(135deg,var(--accent),#0ea5a4);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+    }
+    h1 { margin: 0; font-size: 1.1rem; }
+    .grid {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .item {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .meta { padding: 12px; font-size: 0.9rem; }
+    .meta small { opacity: 0.7; }
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: rgba(230,238,248,.6);
+      font-size: 0.85rem;
+    }
+    @media (max-width: 520px) {
+      .item img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">AI</div>
+      <div>
+        <h1>AI Art Portfolio</h1>
+        <div style="font-size:0.85rem; opacity:0.7;">Generated with Stable Diffusion</div>
+      </div>
+    </div>
+  </header>
 
-    lightbox.addEventListener('click',e={ if(e.target===lightbox) closeLightbox(); });
-    closeBtn.addEventListener('click', closeLightbox);
-  script
-body
-html
+  <main>
+    <section class="grid" id="gallery">
+      <!-- 卡片 1 -->
+      <figure class="item" data-title="Nebula Study" data-desc="5120×3200 • SDXL prompt">
+        <img src="images/00006-948672579.png" alt="Nebula Study" loading="lazy">
+        <figcaption class="meta">
+          <strong>Nebula Study</strong><br>
+          <small>5120×3200 • SDXL prompt</small>
+        </figcaption>
+      </figure>
+
+      <!-- 卡片 2 -->
+      <figure class="item" data-title="Urban Drone" data-desc="3840×2160 • ControlNet + LoRA">
+        <img src="images/00006-948672579.png" alt="Urban Drone" loading="lazy">
+        <figcaption class="meta">
+          <strong>Urban Drone</strong><br>
+          <small>3840×2160 • ControlNet + LoRA</small>
+        </figcaption>
+      </figure>
+
+      <!-- 卡片 3 -->
+      <figure class="item" data-title="Portrait Study" data-desc="3072×4096 • LoRA portrait">
+        <img src="images/00006-948672579.png" alt="Portrait Study" loading="lazy">
+        <figcaption class="meta">
+          <strong>Portrait Study</strong><br>
+          <small>3072×4096 • LoRA portrait</small>
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    Made with Stable Diffusion • For interview portfolio
+  </footer>
+</body>
+</html>
