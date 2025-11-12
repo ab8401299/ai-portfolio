@@ -5,62 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Art Portfolio - Minimal Grid</title>
   <style>
-    :root {
-      --bg: #0f1724;
-      --card: #0b1220;
-      --accent: #7c3aed;
-      --text: #e6eef8;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: linear-gradient(180deg,#071020 0%,var(--bg) 100%);
-      color: var(--text);
-      font-family: Inter, system-ui, Segoe UI, Roboto, "Noto Sans CJK TC", sans-serif;
-    }
-    header {
-      padding: 28px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .logo {
-      width: 44px; height: 44px; border-radius: 8px;
-      background: linear-gradient(135deg,var(--accent),#0ea5a4);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700;
-    }
-    h1 { margin: 0; font-size: 1.1rem; }
-    .grid {
-      padding: 24px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .item {
-      background: var(--card);
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .item img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-    }
-    .meta { padding: 12px; font-size: 0.9rem; }
-    .meta small { opacity: 0.7; }
-    footer {
-      padding: 20px;
-      text-align: center;
-      color: rgba(230,238,248,.6);
-      font-size: 0.85rem;
-    }
-    @media (max-width: 520px) {
-      .item img { height: 180px; }
-    }
+    :root { --bg:#0f1724; --card:#0b1220; --accent:#7c3aed; --text:#e6eef8; }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071020 0%,var(--bg) 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,"Noto Sans CJK TC",sans-serif}
+    header{padding:28px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#0ea5a4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:1.1rem}
+    .grid{padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .item{background:var(--card);border-radius:12px;overflow:hidden;cursor:pointer}
+    .item img{width:100%;height:240px;object-fit:cover;display:block}
+    .meta{padding:12px;font-size:.9rem}.meta small{opacity:.7}
+    footer{padding:20px;text-align:center;color:rgba(230,238,248,.6);font-size:.85rem}
+    @media (max-width:520px){.item img{height:180px}}
   </style>
 </head>
 <body>
@@ -69,7 +26,7 @@
       <div class="logo">AI</div>
       <div>
         <h1>AI Art Portfolio</h1>
-        <div style="font-size:0.85rem; opacity:0.7;">Generated with Stable Diffusion</div>
+        <div style="font-size:.85rem;opacity:.7">Generated with Stable Diffusion</div>
       </div>
     </div>
   </header>
@@ -79,34 +36,21 @@
       <!-- 卡片 1 -->
       <figure class="item" data-title="Nebula Study" data-desc="5120×3200 • SDXL prompt">
         <img src="images/00006-948672579.png" alt="Nebula Study" loading="lazy">
-        <figcaption class="meta">
-          <strong>Nebula Study</strong><br>
-          <small>5120×3200 • SDXL prompt</small>
-        </figcaption>
+        <figcaption class="meta"><strong>Nebula Study</strong><br><small>5120×3200 • SDXL prompt</small></figcaption>
       </figure>
-
       <!-- 卡片 2 -->
       <figure class="item" data-title="Urban Drone" data-desc="3840×2160 • ControlNet + LoRA">
         <img src="images/00006-948672579.png" alt="Urban Drone" loading="lazy">
-        <figcaption class="meta">
-          <strong>Urban Drone</strong><br>
-          <small>3840×2160 • ControlNet + LoRA</small>
-        </figcaption>
+        <figcaption class="meta"><strong>Urban Drone</strong><br><small>3840×2160 • ControlNet + LoRA</small></figcaption>
       </figure>
-
       <!-- 卡片 3 -->
       <figure class="item" data-title="Portrait Study" data-desc="3072×4096 • LoRA portrait">
         <img src="images/00006-948672579.png" alt="Portrait Study" loading="lazy">
-        <figcaption class="meta">
-          <strong>Portrait Study</strong><br>
-          <small>3072×4096 • LoRA portrait</small>
-        </figcaption>
+        <figcaption class="meta"><strong>Portrait Study</strong><br><small>3072×4096 • LoRA portrait</small></figcaption>
       </figure>
     </section>
   </main>
 
-  <footer>
-    Made with Stable Diffusion • For interview portfolio
-  </footer>
+  <footer>Made with Stable Diffusion • For interview portfolio</footer>
 </body>
 </html>
